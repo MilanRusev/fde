@@ -1,6 +1,8 @@
 cryptsetup open /dev/sda3 boot
 cryptsetup open /dev/sda4 rootfs
 
+sleep 2
+
 mkdir -p /target
 mount /dev/mapper/rootfs-root /target
 mount /dev/mapper/boot /target/boot
