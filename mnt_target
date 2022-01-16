@@ -1,0 +1,9 @@
+cryptsetup open /dev/sda3 boot
+cryptsetup open /dev/sda4 rootfs
+
+mkdir /target
+mount /dev/mapper/rootfs-root /target
+mount /dev/mapper/boot /target/boot
+mount /dev/sda1 /target/boot/efi
+
+for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
